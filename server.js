@@ -6,6 +6,7 @@ import connectDb from "./config/db.js"
 import userRouter from "./routes/userRoute.js"
 import cookieParser from "cookie-parser"
 import cloudinary from "cloudinary"
+import productRouter from "./routes/productRoutes.js"
 
 dotenv.config()
 
@@ -16,7 +17,7 @@ connectDb()
 cloudinary.v2.config({
 cloud_name:process.env.CLOUDINARY_NAME,
 api_key:process.env.CLOUDINARY_API_KEY,
-secret_key:process.env.CLOUDINARY_SECRET_KEY
+api_secret: process.env.CLOUDINARY_SECRET
 })
 
 const app=express()
@@ -32,7 +33,7 @@ app.use(cookieParser())
 
 //routes
 app.use("/api/v1/user",userRouter)
-
+app.use("/api/v1/product",productRouter)
 
 
 app.listen(process.env.PORT,()=>{

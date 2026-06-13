@@ -1,5 +1,5 @@
 import express from "express"
-import { getUserProfileController, loginController, logoutController, registerController, updatePasswordController, userProfileUpdateController } from "../controllers/userController.js"
+import { getUserProfileController, loginController, logoutController, registerController, updatePasswordController, updateProfilePicController, userProfileUpdateController } from "../controllers/userController.js"
 import { isAuth } from "../middlewares/authMiddleware.js"
 import { singleUpload } from "../middlewares/multer.js"
 
@@ -12,6 +12,6 @@ router.get("/profile",isAuth,getUserProfileController)
 router.post("/logout",isAuth,logoutController)
 router.put("/profile-update",isAuth,userProfileUpdateController)
 router.put("/update-password",isAuth,updatePasswordController)
-router.put("/update-proficepic",singleUpload,updateProfilePicController)
+router.put("/update-profilepic",isAuth,singleUpload,updateProfilePicController)
 
 export default router

@@ -66,7 +66,7 @@ export const loginController = async (req,res)=>{
 
     const ismatch=await user.comparePassword(password)
     if(!ismatch){
-       return res.success(500).send({
+       return res.status(500).send({
         success:false,
         message:"Password doesnt match"
        })
@@ -224,7 +224,7 @@ export const updateProfilePicController = async(req,res)=>{
     //get file from client photo
     const file = getDataUri(req.file)
       // delete prev image
-    await cloudinary.v2.uploader.destroy(user.profilePic.public_id)
+  //  await cloudinary.v2.uploader.destroy(user.profilePic.public_id)
      // update new img
     const cdb =await cloudinary.v2.uploader.upload(file.content)
 
