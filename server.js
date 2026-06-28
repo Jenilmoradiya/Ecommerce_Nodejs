@@ -7,6 +7,7 @@ import userRouter from "./routes/userRoute.js"
 import cookieParser from "cookie-parser"
 import cloudinary from "cloudinary"
 import productRouter from "./routes/productRoutes.js"
+import categoryRouter from "./routes/categoryRoutes.js"
 
 dotenv.config()
 
@@ -34,6 +35,7 @@ app.use(cookieParser())
 //routes
 app.use("/api/v1/user",userRouter)
 app.use("/api/v1/product",productRouter)
+app.use("/api/v1/category",categoryRouter)
 
 
 app.listen(process.env.PORT,()=>{
